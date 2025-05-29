@@ -19,7 +19,7 @@ const Home = () => {
               <p className="hero-subtitle">
                 Learner | Tech Enthusiast | Software Engineer
               </p>
-              <p className="text-secondary mb-8">
+              <p className="mb-8">
                 I build modern web applications and share my knowledge through writing.
                 Passionate about creating seamless user experiences and solving complex problems.
               </p>
