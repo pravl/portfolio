@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
@@ -18,6 +18,24 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const nav = document.querySelector('.nav-container')
+      if (nav && !nav.contains(event.target as Node)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [location])
+
   return (
     <nav className="navbar">
       <div className="container nav-container">
@@ -25,11 +43,11 @@ const Navbar = () => {
           Praval
         </Link>
 
-        {/* Mobile Menu Button */}
         <button
-          className="block md:hidden"
+          className="mobile-menu-btn md:hidden"
           onClick={toggleMenu}
           aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
         >
           <svg
             className="w-6 h-6"
@@ -48,14 +66,12 @@ const Navbar = () => {
           </svg>
         </button>
 
-        {/* Desktop & Mobile Menu */}
         <ul className={`nav-links ${isMenuOpen ? 'mobile-menu-open' : ''}`}>
           {menuItems.map((item) => (
             <li key={item.path}>
               <Link
                 to={item.path}
                 className={`nav-link ${isActive(item.path) ? 'active' : ''}`}
-                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
