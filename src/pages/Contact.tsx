@@ -64,8 +64,8 @@ const Contact = () => {
         <form onSubmit={handleSubmit} className="mt-8">
           <div className="space-y-6">
             {submitStatus && (
-              <div className={`p-4 rounded-lg ${
-                submitStatus.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+              <div className={`form-message ${
+                submitStatus.type === 'success' ? 'success' : 'error'
               }`}>
                 {submitStatus.message}
               </div>
@@ -83,7 +83,8 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2 bg-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary placeholder-text-secondary transition-colors"
+                placeholder="Your name"
               />
             </div>
 
@@ -99,7 +100,8 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2 bg-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary placeholder-text-secondary transition-colors"
+                placeholder="your.email@example.com"
               />
             </div>
 
@@ -115,7 +117,8 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-2 bg-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary placeholder-text-secondary resize-y transition-colors"
+                placeholder="Your message here..."
               />
             </div>
 
