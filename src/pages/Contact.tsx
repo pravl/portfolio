@@ -83,7 +83,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full px-4 py-2 bg-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary placeholder-text-secondary transition-colors"
+                className="w-full px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-text-primary dark:text-white placeholder-text-secondary transition-colors"
                 placeholder="Your name"
               />
             </div>
@@ -100,7 +100,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="w-full px-4 py-2 bg-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary placeholder-text-secondary transition-colors"
+                className="w-full px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-text-primary dark:text-white placeholder-text-secondary transition-colors"
                 placeholder="your.email@example.com"
               />
             </div>
@@ -117,7 +117,7 @@ const Contact = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, message: e.target.value })
                 }
-                className="w-full px-4 py-2 bg-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text-primary placeholder-text-secondary resize-y transition-colors"
+                className="w-full px-4 py-2 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-text-primary dark:text-white placeholder-text-secondary resize-y transition-colors"
                 placeholder="Your message here..."
               />
             </div>
