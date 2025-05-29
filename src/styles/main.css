@@ -977,34 +977,121 @@ input::placeholder, textarea::placeholder {
 /* Developer Avatar */
 .developer-avatar {
   width: 100%;
-  max-width: 300px;
+  max-width: 800px;
   margin: 0 auto;
   position: relative;
+  background: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 0 0 2px #1a1a1a;
+  overflow: hidden;
 }
 
-@media (min-width: 768px) {
-  .developer-avatar {
-    max-width: 400px;
-    margin: 0;
-  }
+.terminal-header {
+  background: #2d2d2d;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #3d3d3d;
+}
+
+.terminal-title {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  font-family: monospace;
+  margin-left: 8px;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 12px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-button.close {
+  background: #ff5f56;
+}
+
+.terminal-button.minimize {
+  background: #ffbd2e;
+}
+
+.terminal-button.maximize {
+  background: #27c93f;
+}
+
+.terminal-content {
+  background: #ffffff;
+  padding: 20px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1a1a1a;
+}
+
+.canvas-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 2px rgba(26, 26, 26, 0.1);
 }
 
 .developer-avatar canvas {
-  filter: drop-shadow(0 0 10px rgba(var(--primary-rgb), 0.2));
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 15px rgba(26, 26, 26, 0.1));
   transition: all 0.3s ease;
 }
 
-.developer-avatar:hover canvas {
-  filter: drop-shadow(0 0 20px rgba(var(--primary-rgb), 0.3));
-  transform: scale(1.02);
-}
+@media (max-width: 768px) {
+  .developer-avatar {
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: 2px solid #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+  }
 
-/* Remove old profile container styles */
-.profile-container,
-.profile-pic,
-.profile-border,
-.profile-glow {
-  display: none;
+  .terminal-content {
+    padding: 10px;
+    min-height: 250px;
+  }
+
+  .canvas-container {
+    padding: 10px;
+  }
+
+  .terminal-header {
+    padding: 8px 12px;
+    background: #2d2d2d;
+  }
+
+  .terminal-title {
+    font-size: 0.8rem;
+    color: #a0a0a0;
+  }
+
+  .terminal-buttons {
+    margin-right: 8px;
+    gap: 6px;
+  }
+
+  .terminal-button {
+    width: 10px;
+    height: 10px;
+  }
 }
 
 /* Theme Toggle Button */
