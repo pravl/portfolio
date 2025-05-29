@@ -307,20 +307,21 @@ body {
   border-radius: 0.75rem;
   overflow: hidden;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
 .blog-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
 }
 
 .blog-image {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (min-width: 768px) {
@@ -995,17 +996,18 @@ input:focus, textarea:focus {
 
 /* Blog Card Animations */
 .blog-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
 .blog-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
 }
 
 .blog-image {
-  transition: transform 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .blog-card:hover .blog-image {
@@ -1013,5 +1015,42 @@ input:focus, textarea:focus {
 }
 
 .blog-card .btn {
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: transparent;
+}
+
+.blog-card .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  z-index: -1;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blog-card .btn:hover {
+  color: white;
+  border-color: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.blog-card .btn:hover::before {
+  width: 100%;
+}
+
+.blog-card .btn:hover svg {
+  transform: translateX(6px);
+  color: white;
+}
+
+.blog-card .btn svg {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--primary);
 } 

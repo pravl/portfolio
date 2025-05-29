@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FaLinkedin } from 'react-icons/fa'
 import { FaMedium } from 'react-icons/fa'
+import { FaArrowRight } from 'react-icons/fa'
 import cssPlaceholder from '../assets/css-post-placeholder.jpg';
 import javascriptPlaceholder from '../assets/javascript-post-placeholder.jpg';
 import htmlAccessibilityPlaceholder from '../assets/html-accessibility-placeholder.jpg';
@@ -143,7 +144,7 @@ const Blog = () => {
                   className="btn btn-outline"
                   style={{ marginTop: '1rem' }}
                 >
-                  Read More
+                  Read More <FaArrowRight />
                 </a>
               </div>
             </article>
