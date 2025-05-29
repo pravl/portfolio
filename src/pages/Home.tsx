@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { FaGithub, FaLinkedin, FaTwitter, FaMedium, FaHandPeace, FaArrowRight } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaTwitter, FaMedium, FaHandPeace, FaArrowRight, FaEnvelope } from 'react-icons/fa'
 import profilePic from '../assets/profile-pic.jpg';
 import mediumPlaceholder from '../assets/medium-placeholder.jpg';
 import linkedinPlaceholder from '../assets/linkedin-placeholder.jpg';
@@ -25,10 +25,10 @@ const Home = () => {
               </p>
               <div className="flex gap-4">
                 <Link to="/contact" className="btn btn-primary">
-                  Contact Me
+                  Contact Me <FaEnvelope />
                 </Link>
                 <Link to="/blog" className="btn btn-outline">
-                  Read Blog
+                  Read Blog <FaArrowRight />
                 </Link>
               </div>
               <div className="flex gap-6 mt-8">

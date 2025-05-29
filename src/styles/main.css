@@ -436,14 +436,17 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
   width: 100%;
   margin-bottom: 0.5rem;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -454,22 +457,96 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--primary);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover::before {
+  transform: translateX(100%);
 }
 
 .btn-outline {
   border: 2px solid var(--primary);
   color: var(--primary);
+  background: transparent;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
 .btn-outline:hover {
-  background-color: var(--primary);
   color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.25);
+}
+
+.btn-outline:hover::before {
+  width: 100%;
+}
+
+/* Add ripple effect for both button types */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease-out, height 0.6s ease-out, opacity 0.6s ease-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn:active::after {
+  width: 200%;
+  height: 200%;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* Social Icons Animation */
+.hero .text-secondary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero .text-secondary:hover {
+  transform: translateY(-3px);
+  color: var(--primary);
 }
 
 /* Media Queries */
