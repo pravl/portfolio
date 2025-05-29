@@ -27,7 +27,7 @@ const Blog = () => {
             id: '1',
             title: 'CSS Property content-visibility ',
             excerpt: 'Discover how the content-visibility CSS property can significantly improve your website\'s rendering performance...',
-            date: '2019-09-22',
+            date: '2025-05',
             image: cssPlaceholder,
             url: 'https://www.linkedin.com/posts/praval-jain-aa346488_css-webdevelopment-performanceoptimization-activity-7332292915488010240-bUgH?utm_source=share&utm_medium=member_desktop&rcm=ACoAABKTtxsB51DHcjM3Df9RzmbHLljsUHYjS58',
             source: 'linkedin',
@@ -36,7 +36,7 @@ const Blog = () => {
             id: '4',
             title: 'CSS Property @scope',
             excerpt: 'Exploring the new @scope CSS feature and how it revolutionizes style scoping and component isolation...',
-            date: '2019-09-22',
+            date: '2025-05',
             image: cssPlaceholder,
             url: 'https://www.linkedin.com/posts/praval-jain-aa346488_css-webdevelopment-frontend-activity-7330985093387255809--WY6?utm_source=share&utm_medium=member_desktop&rcm=ACoAABKTtxsB51DHcjM3Df9RzmbHLljsUHYjS58',
             source: 'linkedin',
@@ -45,7 +45,7 @@ const Blog = () => {
             id: '2',
             title: 'React App authentication With MSAL.js',
             excerpt: 'A comprehensive guide to implementing Microsoft Authentication Library (MSAL.js) in your React applications...',
-            date: '2019-09-22',
+            date: '2019-09',
             image: javascriptPlaceholder,
             url: 'https://medium.com/praval-jain/react-app-authentication-with-msal-js-a5b09b7ceb4e',
             source: 'medium'
@@ -54,7 +54,7 @@ const Blog = () => {
             id: '3',
             title: 'Use of Sub-Resource Integrity in CDNs',
             excerpt: 'Learn how to enhance security when using CDNs by implementing Sub-Resource Integrity checks...',
-            date: '2019-09-29',
+            date: '2019-09',
             image: javascriptPlaceholder,
             url: 'https://medium.com/@praval_jain/use-of-sub-resource-integrity-in-cdns-b0242b1dba72',
             source: 'medium'
@@ -63,7 +63,7 @@ const Blog = () => {
             id: '5',
             title: 'Unfold the Web Accessibility',
             excerpt: 'An introduction to web accessibility principles and practices for creating inclusive digital experiences...',
-            date: '2020-03-01',
+            date: '2020-03',
             image: htmlAccessibilityPlaceholder,
             url: 'https://medium.com/@praval_jain/unfold-the-web-accessibility-part-1-1e7325eb0b33',
             source: 'medium'
@@ -86,7 +86,6 @@ const Blog = () => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
     })
   }
 
