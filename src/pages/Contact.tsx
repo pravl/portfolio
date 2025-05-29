@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { sanitizeInput } from '../utils/inputSanitize'
 
 const API_URL = import.meta.env.PROD 
-  ? 'https://your-app-name.onrender.com/api/send-email'  // You'll replace this with your Render URL
+  ? 'https://portfolio-w7e5.onrender.com/api/send-email'  // You'll replace this with your Render URL
   : 'http://localhost:3001/api/send-email'
 
 const Contact = () => {
@@ -18,6 +19,11 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus(null)
+    const sanitizedFormData = {
+      name: sanitizeInput(formData.name),
+      email: sanitizeInput(formData.email),
+      message: sanitizeInput(formData.message)
+    }
 
     try {
       const response = await fetch(API_URL, {
@@ -25,7 +31,7 @@ const Contact = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(sanitizedFormData)
       })
 
       if (!response.ok) {
