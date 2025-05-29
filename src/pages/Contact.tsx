@@ -1,19 +1,50 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 
+const API_URL = import.meta.env.PROD 
+  ? 'https://your-app-name.onrender.com/api/send-email'  // You'll replace this with your Render URL
+  : 'http://localhost:3001/api/send-email'
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null)
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    // Here you would typically handle the form submission
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! I will get back to you soon.')
-    setFormData({ name: '', email: '', message: '' })
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you for your message! I will get back to you soon.'
+      })
+      setFormData({ name: '', email: '', message: '' })
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again later.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -26,6 +57,14 @@ const Contact = () => {
 
         <form onSubmit={handleSubmit} className="mt-8">
           <div className="space-y-6">
+            {submitStatus && (
+              <div className={`p-4 rounded-lg ${
+                submitStatus.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+              }`}>
+                {submitStatus.message}
+              </div>
+            )}
+
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Name <span className="text-red-500">*</span>
@@ -74,23 +113,27 @@ const Contact = () => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary w-full">
-              Send Message
+            <button 
+              type="submit" 
+              className="btn btn-primary w-full"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </div>
         </form>
 
-        <div className="mt-12 text-center">
+        {/* <div className="mt-12 text-center">
           <p className="text-secondary">
             You can also reach me at:{' '}
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:pravaljain43@gmail.com"
               className="text-primary hover:underline"
             >
-              your.email@example.com
+              pravaljain43@gmail.com
             </a>
           </p>
-        </div>
+        </div> */}
       </div>
     </div>
   )

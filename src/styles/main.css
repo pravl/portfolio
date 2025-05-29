@@ -8,6 +8,10 @@
   --success: #22c55e;
   --warning: #f59e0b;
   --danger: #ef4444;
+  --navbar-height: 4rem;
+  --mobile-navbar-height: 4rem;
+  --section-padding: 5rem;
+  --mobile-section-padding: 3rem;
 }
 
 * {
@@ -21,6 +25,13 @@ body {
   line-height: 1.6;
   color: var(--dark);
   background-color: var(--light);
+  padding-top: var(--mobile-navbar-height);
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: var(--navbar-height);
+  }
 }
 
 .container {
@@ -31,12 +42,14 @@ body {
 }
 
 .section {
-  padding: 3rem 0;
+  padding: var(--mobile-section-padding) 0;
+  scroll-margin-top: var(--mobile-navbar-height);
 }
 
 @media (min-width: 768px) {
   .section {
-    padding: 5rem 0;
+    padding: var(--section-padding) 0;
+    scroll-margin-top: var(--navbar-height);
   }
 }
 
@@ -186,11 +199,18 @@ body {
 
 /* Hero Section */
 .hero {
-  min-height: calc(100vh - 4rem);
+  min-height: calc(100vh - var(--mobile-navbar-height));
   display: flex;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: calc(100vh - var(--navbar-height));
+    padding-top: 3rem;
+  }
 }
 
 .hero-content {
@@ -266,7 +286,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-top: 1.5rem;
+  padding-top: 1rem;
 }
 
 @media (min-width: 640px) {
@@ -279,7 +299,6 @@ body {
   .blog-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    margin-top: 2rem;
   }
 }
 
@@ -825,16 +844,18 @@ input:focus, textarea:focus {
   font-size: 1.75rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 0.75rem;
+  margin: 1rem 0 0.75rem;
   background: linear-gradient(to right, var(--primary), var(--primary-dark));
   -webkit-background-clip: text;
   color: transparent;
+  padding-top: calc(var(--mobile-navbar-height) / 2);
 }
 
 @media (min-width: 768px) {
   .section-title {
     font-size: 2.25rem;
-    margin-bottom: 1rem;
+    margin: 2rem 0 1rem;
+    padding-top: 0;
   }
 }
 
@@ -856,13 +877,14 @@ input:focus, textarea:focus {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-top: 2rem;
+  padding-top: 1rem;
 }
 
 @media (min-width: 768px) {
   .featured-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    padding-top: 2rem;
   }
 }
 

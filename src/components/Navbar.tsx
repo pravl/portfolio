@@ -10,7 +10,7 @@ const Navbar = () => {
   const menuItems = [
     { path: '/', label: 'Home' },
     { path: '/blog', label: 'Blog' },
-    { path: '/projects', label: 'Projects' },
+    //{ path: '/projects', label: 'Projects' },
     { path: '/contact', label: 'Contact' }
   ]
 

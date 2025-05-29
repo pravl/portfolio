@@ -17,7 +17,7 @@ const Home = () => {
                 </span>
               </h1>
               <p className="hero-subtitle">
-                Learner | Tech Enthusiast
+                Learner | Tech Enthusiast | Software Engineer
               </p>
               <p className="text-secondary mb-8">
                 I build modern web applications and share my knowledge through writing.
@@ -48,14 +48,14 @@ const Home = () => {
                 >
                   <FaLinkedin size={24} />
                 </a>
-                <a
+                {/* <a
                   href="https://twitter.com/yourusername"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-secondary hover:text-primary transition-colors"
                 >
                   <FaTwitter size={24} />
-                </a>
+                </a> */}
                 <a
                   href="https://medium.com/@praval_jain"
                   target="_blank"
