@@ -1512,4 +1512,22 @@ input::placeholder, textarea::placeholder {
 .featured-card:nth-child(2) {
   animation: fadeInUp 0.6s ease-out 0.2s forwards;
   opacity: 0;
+}
+
+/* Typing cursor animation */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  color: var(--text-secondary);
+}
+
+@keyframes blink {
+  from, to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 } 

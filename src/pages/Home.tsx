@@ -3,6 +3,7 @@ import { FaGithub, FaLinkedin, FaTwitter, FaMedium, FaHandPeace, FaArrowRight, F
 import mediumPlaceholder from '../assets/medium-placeholder.jpg';
 import linkedinPlaceholder from '../assets/linkedin-placeholder.jpg';
 import DeveloperAvatar from '../components/DeveloperAvatar';
+import TypingText from '../components/TypingText';
 
 const Home = () => {
   return (
@@ -19,10 +20,12 @@ const Home = () => {
               <p className="hero-subtitle">
                 Learner | Tech Enthusiast | Software Engineer
               </p>
-              <p className="mb-8">
-                I build modern web applications and share my knowledge through writing.
-                Passionate about creating seamless user experiences and solving complex problems.
-              </p>
+              <TypingText
+                text="I build modern web applications and share my knowledge through writing. Passionate about creating seamless user experiences and solving complex problems."
+                className="mb-8"
+                typingSpeed={30}
+                startDelay={1000}
+              />
               <div className="flex gap-4">
                 <Link to="/contact" className="btn btn-primary">
                   Contact Me <FaEnvelope />
