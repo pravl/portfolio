@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { FaGithub, FaLinkedin, FaTwitter, FaMedium, FaHandPeace, FaArrowRight, FaEnvelope } from 'react-icons/fa'
-import profilePic from '../assets/profile-pic.jpg';
 import mediumPlaceholder from '../assets/medium-placeholder.jpg';
 import linkedinPlaceholder from '../assets/linkedin-placeholder.jpg';
+import DeveloperAvatar from '../components/DeveloperAvatar';
 
 const Home = () => {
   return (
@@ -67,15 +67,7 @@ const Home = () => {
               </div>
             </div>
             <div className="hero-image animate-fade-in">
-              <div className="profile-container">
-                <img
-                  src={profilePic}
-                  alt="Profile"
-                  className="profile-pic"
-                />
-                <div className="profile-border"></div>
-                <div className="profile-glow"></div>
-              </div>
+              <DeveloperAvatar />
             </div>
           </div>
         </div>

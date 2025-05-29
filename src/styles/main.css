@@ -974,63 +974,105 @@ input::placeholder, textarea::placeholder {
   border-color: rgba(248, 113, 113, 0.2);
 }
 
-/* Profile Container Animation */
-.profile-container {
-  position: relative;
-  width: 280px;
-  height: 280px;
-  margin: 0 auto;
-  animation: float 6s ease-in-out infinite;
-  perspective: 1000px;
-}
-
-.profile-container::before {
-  content: '';
-  position: absolute;
-  inset: -10px;
-  border: 2px solid var(--primary);
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  animation: morph 8s linear infinite;
-}
-
-.profile-container::after {
-  content: '';
-  position: absolute;
-  inset: -20px;
-  border: 2px solid var(--primary);
-  border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
-  animation: morph 8s linear infinite reverse;
-}
-
-.profile-pic {
+/* Developer Avatar */
+.developer-avatar {
   width: 100%;
-  height: 100%;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  object-fit: cover;
-  background: white;
-  padding: 5px;
+  max-width: 300px;
+  margin: 0 auto;
   position: relative;
-  z-index: 1;
-  animation: morph 8s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .developer-avatar {
+    max-width: 400px;
+    margin: 0;
+  }
+}
+
+.developer-avatar canvas {
+  filter: drop-shadow(0 0 10px rgba(var(--primary-rgb), 0.2));
   transition: all 0.3s ease;
 }
 
-@keyframes morph {
-  0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-  25% {
-    border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
-  }
-  50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-  }
-  75% {
-    border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%;
-  }
-  100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
+.developer-avatar:hover canvas {
+  filter: drop-shadow(0 0 20px rgba(var(--primary-rgb), 0.3));
+  transform: scale(1.02);
+}
+
+/* Remove old profile container styles */
+.profile-container,
+.profile-pic,
+.profile-border,
+.profile-glow {
+  display: none;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--hover-bg);
+  color: var(--primary);
+  transform: rotate(15deg);
+}
+
+.theme-toggle-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle-btn:active svg {
+  transform: scale(0.9);
+}
+
+/* Update hero section for dark mode */
+.hero-title {
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.section-title {
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Update card styles for dark mode */
+.blog-card,
+.featured-card {
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+
+/* Update text colors for dark mode */
+.blog-title,
+.featured-title {
+  color: var(--text-primary);
+}
+
+.blog-excerpt,
+.featured-excerpt {
+  color: var(--text-secondary);
+}
+
+/* Update link colors for dark mode */
+.nav-link {
+  color: var(--text-primary);
 }
 
 @keyframes float {
@@ -1045,68 +1087,6 @@ input::placeholder, textarea::placeholder {
   }
   100% {
     transform: translateY(0px) rotate(0deg);
-  }
-}
-
-.profile-container:hover .profile-pic {
-  transform: scale(1.05);
-  border-radius: 50%;
-}
-
-.profile-container:hover::before,
-.profile-container:hover::after {
-  animation-play-state: paused;
-  opacity: 0.8;
-}
-
-/* Add glow effect */
-.profile-container::before {
-  filter: blur(1px);
-  opacity: 0.7;
-}
-
-.profile-container::after {
-  filter: blur(2px);
-  opacity: 0.5;
-}
-
-/* Add shine effect */
-.profile-pic::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 45%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.1) 55%,
-    transparent 100%
-  );
-  transform: rotate(45deg);
-  animation: shine 6s infinite;
-  pointer-events: none;
-}
-
-@keyframes shine {
-  0% {
-    transform: scale(0) rotate(45deg);
-    opacity: 0;
-  }
-  80% {
-    transform: scale(0) rotate(45deg);
-    opacity: 0;
-  }
-  85% {
-    transform: scale(2) rotate(45deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(0) rotate(45deg);
-    opacity: 0;
   }
 }
 
@@ -1291,7 +1271,7 @@ input::placeholder, textarea::placeholder {
 
 .blog-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(var(--primary), 0.15);
+  box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.15);
 }
 
 .blog-image {
@@ -1445,72 +1425,4 @@ input::placeholder, textarea::placeholder {
 .featured-card:nth-child(2) {
   animation: fadeInUp 0.6s ease-out 0.2s forwards;
   opacity: 0;
-}
-
-/* Theme Toggle Button */
-.theme-toggle-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0.5rem;
-  border: none;
-  background: transparent;
-  color: var(--text-primary);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.theme-toggle-btn:hover {
-  background: var(--hover-bg);
-  color: var(--primary);
-  transform: rotate(15deg);
-}
-
-.theme-toggle-btn svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  transition: transform 0.3s ease;
-}
-
-.theme-toggle-btn:active svg {
-  transform: scale(0.9);
-}
-
-/* Update hero section for dark mode */
-.hero-title {
-  background: linear-gradient(to right, var(--primary), var(--primary-dark));
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.section-title {
-  background: linear-gradient(to right, var(--primary), var(--primary-dark));
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-/* Update card styles for dark mode */
-.blog-card,
-.featured-card {
-  background: var(--card-bg);
-  box-shadow: var(--card-shadow);
-}
-
-/* Update text colors for dark mode */
-.blog-title,
-.featured-title {
-  color: var(--text-primary);
-}
-
-.blog-excerpt,
-.featured-excerpt {
-  color: var(--text-secondary);
-}
-
-/* Update link colors for dark mode */
-.nav-link {
-  color: var(--text-primary);
 } 
