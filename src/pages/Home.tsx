@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import { FaGithub, FaLinkedin, FaTwitter, FaMedium, FaHandPeace, FaArrowRight, FaEnvelope } from 'react-icons/fa'
-import profilePic from '../assets/profile-pic.jpg';
 import mediumPlaceholder from '../assets/medium-placeholder.jpg';
 import linkedinPlaceholder from '../assets/linkedin-placeholder.jpg';
+import DeveloperAvatar from '../components/DeveloperAvatar';
+import TypingText from '../components/TypingText';
 
 const Home = () => {
   return (
@@ -19,10 +20,12 @@ const Home = () => {
               <p className="hero-subtitle">
                 Learner | Tech Enthusiast | Software Engineer
               </p>
-              <p className="text-secondary mb-8">
-                I build modern web applications and share my knowledge through writing.
-                Passionate about creating seamless user experiences and solving complex problems.
-              </p>
+              <TypingText
+                text="I build modern web applications and share my knowledge through writing. Passionate about creating seamless user experiences and solving complex problems."
+                className="mb-8"
+                typingSpeed={30}
+                startDelay={1000}
+              />
               <div className="flex gap-4">
                 <Link to="/contact" className="btn btn-primary">
                   Contact Me <FaEnvelope />
@@ -67,15 +70,7 @@ const Home = () => {
               </div>
             </div>
             <div className="hero-image animate-fade-in">
-              <div className="profile-container">
-                <img
-                  src={profilePic}
-                  alt="Profile"
-                  className="profile-pic"
-                />
-                <div className="profile-border"></div>
-                <div className="profile-glow"></div>
-              </div>
+              <DeveloperAvatar />
             </div>
           </div>
         </div>
