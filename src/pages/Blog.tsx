@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { FaLinkedin } from 'react-icons/fa'
+import { FaMedium } from 'react-icons/fa'
 import cssPlaceholder from '../assets/css-post-placeholder.jpg';
 import javascriptPlaceholder from '../assets/javascript-post-placeholder.jpg';
 import htmlAccessibilityPlaceholder from '../assets/html-accessibility-placeholder.jpg';
@@ -110,14 +112,29 @@ const Blog = () => {
         <div className="blog-grid">
           {posts.map((post) => (
             <article key={post.id} className="blog-card animate-fade-in">
-              <img src={post.image} alt={post.title} className="blog-image" />
+              <img 
+                src={post.image} 
+                alt={post.title} 
+                className="blog-image"
+              />
               <div className="blog-content">
                 <h3 className="blog-title">{post.title}</h3>
                 <p className="blog-excerpt">{post.excerpt}</p>
                 <div className="blog-meta">
                   <span>{formatDate(post.date)}</span>
-                  <span>•</span>
-                  <span>{post.source === 'medium' ? 'Medium' : 'LinkedIn'}</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    {post.source === 'medium' ? (
+                      <>
+                        <FaMedium style={{ color: '#000000' }} />
+                        Medium
+                      </>
+                    ) : (
+                      <>
+                        <FaLinkedin style={{ color: '#2563eb' }} />
+                        LinkedIn
+                      </>
+                    )}
+                  </span>
                 </div>
                 <a
                   href={post.url}
