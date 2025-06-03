@@ -27,7 +27,7 @@
   --primary-dark: #6366f1;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
-  --background: #0f172a;
+  --background: #0c1323;
   --card-bg: #1e293b;
   --navbar-bg: rgba(15, 23, 42, 0.9);
   --navbar-border: rgba(51, 65, 85, 0.8);
@@ -58,6 +58,17 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--background);
+  background-image: 
+    radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
+  background-size: 60rem 60rem;
+  background-position: center;
+  background-repeat: repeat;
   padding-top: var(--mobile-navbar-height);
 }
 
@@ -701,6 +712,91 @@ body {
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.03) 25%,
+    transparent 50%,
+    rgba(99, 102, 241, 0.03) 75%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  animation: moveBackground 15s ease infinite;
+  pointer-events: none;
+}
+
+/* Mesh gradient background */
+.background-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* Floating particles */
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.particle:nth-child(1) { left: 10%; animation: float 8s infinite; }
+.particle:nth-child(2) { left: 20%; animation: float 10s infinite 1s; }
+.particle:nth-child(3) { left: 30%; animation: float 7s infinite 2s; }
+.particle:nth-child(4) { left: 40%; animation: float 9s infinite 3s; }
+.particle:nth-child(5) { left: 50%; animation: float 11s infinite 4s; }
+.particle:nth-child(6) { left: 60%; animation: float 8s infinite 5s; }
+.particle:nth-child(7) { left: 70%; animation: float 10s infinite 6s; }
+.particle:nth-child(8) { left: 80%; animation: float 7s infinite 7s; }
+.particle:nth-child(9) { left: 90%; animation: float 9s infinite 8s; }
 
 /* Utility Classes */
 .flex {
@@ -1530,4 +1626,4 @@ input::placeholder, textarea::placeholder {
   50% {
     opacity: 0;
   }
-} 
+}
