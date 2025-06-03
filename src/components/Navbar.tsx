@@ -40,8 +40,16 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="container nav-container">
-        <Link to="/" className="nav-logo">
-          Praval
+        <Link to="/" className="nav-logo" style={{ textDecoration: 'none' }}>
+          <div style={{
+            fontSize: '24px',
+            color: 'initial',
+            background: 'none',
+            filter: 'none',
+            WebkitTextFillColor: 'initial'
+          }}>
+            👨‍💻
+          </div>
         </Link>
 
         <div className="nav-right">
@@ -89,4 +97,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar 
+export default Navbar

@@ -1,19 +1,19 @@
 :root {
   /* Colors */
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
-  --text-primary: #1f2937;
-  --text-secondary: #4b5563;
-  --background: #ffffff;
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --background: #f8fafc;
   --card-bg: #ffffff;
-  --navbar-bg: rgba(255, 255, 255, 0.8);
-  --navbar-border: rgba(229, 231, 235, 0.8);
-  --navbar-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --navbar-blur: 8px;
-  --nav-link-hover: rgba(243, 244, 246, 0.9);
-  --nav-link-active: rgba(243, 244, 246, 1);
-  --nav-link-hover-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --navbar-bg: rgba(255, 255, 255, 0.9);
+  --navbar-border: rgba(226, 232, 240, 0.8);
+  --navbar-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --navbar-blur: 12px;
+  --nav-link-hover: rgba(248, 250, 252, 0.95);
+  --nav-link-active: rgba(248, 250, 252, 1);
+  --nav-link-hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   
   /* Sizes */
   --navbar-height: 4rem;
@@ -23,20 +23,20 @@
 }
 
 [data-theme='dark'] {
-  --primary: #60a5fa;
-  --primary-dark: #3b82f6;
-  --text-primary: #f3f4f6;
-  --text-secondary: #d1d5db;
-  --background: #111827;
-  --card-bg: #1f2937;
-  --navbar-bg: rgba(17, 24, 39, 0.8);
-  --navbar-border: rgba(55, 65, 81, 0.8);
-  --navbar-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  --nav-link-hover: rgba(31, 41, 55, 0.9);
-  --nav-link-active: rgba(31, 41, 55, 1);
-  --nav-link-hover-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
-  --primary-rgb: 96, 165, 250;  /* RGB values for #60a5fa */
+  --primary: #818cf8;
+  --primary-dark: #6366f1;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --background: #0f172a;
+  --card-bg: #1e293b;
+  --navbar-bg: rgba(15, 23, 42, 0.9);
+  --navbar-border: rgba(51, 65, 85, 0.8);
+  --navbar-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+  --nav-link-hover: rgba(30, 41, 59, 0.95);
+  --nav-link-active: rgba(30, 41, 59, 1);
+  --nav-link-hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+  --primary-rgb: 129, 140, 248;  /* RGB values for #818cf8 */
 }
 
 /* Theme transition */

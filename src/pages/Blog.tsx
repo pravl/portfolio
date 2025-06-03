@@ -27,6 +27,15 @@ const Blog = () => {
         // Example data structure
         const samplePosts: BlogPost[] = [
           {
+            id: '6',
+            title: 'CSS Property :𝐡𝐚𝐬()',
+            excerpt: 'Discover how the content-visibility CSS property can significantly improve your website\'s rendering performance...',
+            date: '2025-06',
+            image: cssPlaceholder,
+            url: 'https://www.linkedin.com/posts/praval-jain-aa346488_css-webdevelopment-frontend-activity-7334230875246600192-ktoh?utm_source=share&utm_medium=member_desktop&rcm=ACoAABKTtxsB51DHcjM3Df9RzmbHLljsUHYjS58',
+            source: 'linkedin',
+          },
+          {
             id: '1',
             title: 'CSS Property content-visibility ',
             excerpt: 'Discover how the content-visibility CSS property can significantly improve your website\'s rendering performance...',
