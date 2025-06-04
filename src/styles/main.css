@@ -4,7 +4,7 @@
   --primary-dark: #4f46e5;
   --text-primary: #1e293b;
   --text-secondary: #64748b;
-  --background: #f8fafc;
+  --background: #f8fafc; /* Base light theme background */
   --card-bg: #ffffff;
   --navbar-bg: rgba(255, 255, 255, 0.9);
   --navbar-border: rgba(226, 232, 240, 0.8);
@@ -14,7 +14,8 @@
   --nav-link-active: rgba(248, 250, 252, 1);
   --nav-link-hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  
+  --bg-gradient-light: linear-gradient(45deg, rgba(220, 220, 255, 0.1), rgba(220, 255, 255, 0.1), rgba(255, 220, 255, 0.1));
+
   /* Sizes */
   --navbar-height: 4rem;
   --mobile-navbar-height: 3.5rem;
@@ -27,7 +28,7 @@
   --primary-dark: #6366f1;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
-  --background: #0c1323;
+  --background: #0A0F1A; /* New darker base for dark theme */
   --card-bg: #1e293b;
   --navbar-bg: rgba(15, 23, 42, 0.9);
   --navbar-border: rgba(51, 65, 85, 0.8);
@@ -37,6 +38,7 @@
   --nav-link-hover-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
   --primary-rgb: 129, 140, 248;  /* RGB values for #818cf8 */
+  --bg-gradient-dark: linear-gradient(45deg, rgba(30, 30, 100, 0.15), rgba(30, 100, 100, 0.15), rgba(100, 30, 100, 0.15));
 }
 
 /* Theme transition */
@@ -57,18 +59,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.6;
   color: var(--text-primary);
-  background-color: var(--background);
-  background-image: 
-    radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-    radial-gradient(at 80% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-    radial-gradient(at 0% 50%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-    radial-gradient(at 80% 50%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-    radial-gradient(at 80% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
-  background-size: 60rem 60rem;
-  background-position: center;
-  background-repeat: repeat;
+  background-color: var(--background); /* This will use the updated --background vars */
   padding-top: var(--mobile-navbar-height);
 }
 
@@ -140,35 +131,18 @@ body {
 }
 
 .nav-logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: 1.25rem; /* Keep for potential text fallback or if SVG size is relative */
+  font-weight: 700; /* Keep for similar reasons */
+  color: var(--text-primary); /* SVG will use this via currentColor */
   text-decoration: none;
   position: relative;
   z-index: 1001;
   transition: all 0.3s ease;
+  display: flex; /* Helps align SVG */
+  align-items: center; /* Helps align SVG */
 }
 
-.nav-logo::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.nav-logo:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
+/* Removed text-specific gradient and hover underline (::after) for SVG logo */
 
 .nav-links {
   display: none;
@@ -207,7 +181,7 @@ body {
   text-decoration: none;
   font-weight: 500;
   padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem; /* Increased border-radius */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -222,7 +196,7 @@ body {
 
 .nav-link.active {
   color: var(--primary);
-  font-weight: 600;
+  font-weight: 700; /* Increased font-weight for active links */
   background: var(--nav-link-active);
 }
 
@@ -652,7 +626,7 @@ body {
     text-align: center;
     padding: 0.75rem;
     font-size: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem; /* Increased for mobile consistency */
     background: var(--card-bg);
     margin: 0;
   }
@@ -666,6 +640,7 @@ body {
   .nav-link.active {
     background: var(--nav-link-active);
     box-shadow: var(--nav-link-hover-shadow);
+    /* font-weight will be inherited from the main .nav-link.active rule */
   }
 
   .nav-link.active::after {
@@ -694,7 +669,7 @@ body {
 /* Active Link Styles */
 .nav-link.active {
   color: var(--primary);
-  font-weight: 600;
+  font-weight: 700; /* Increased font-weight */
 }
 
 /* Animations */
@@ -732,71 +707,17 @@ body::before {
   left: 0;
   right: 0;
   height: 100vh;
-  background: linear-gradient(
-    45deg,
-    transparent 0%,
-    rgba(99, 102, 241, 0.03) 25%,
-    transparent 50%,
-    rgba(99, 102, 241, 0.03) 75%,
-    transparent 100%
-  );
+  background: var(--bg-gradient-light);
   background-size: 200% 200%;
   animation: moveBackground 15s ease infinite;
   pointer-events: none;
+  z-index: -1; /* Ensure it's behind content */
 }
 
-/* Mesh gradient background */
-.background-mesh {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -2;
-  background-image: 
-    linear-gradient(to right, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-  mask-image: radial-gradient(circle at center, black, transparent 80%);
+[data-theme='dark'] body::before {
+  background: var(--bg-gradient-dark);
 }
 
-/* Floating particles */
-@keyframes float {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(180deg); }
-  100% { transform: translateY(0) rotate(360deg); }
-}
-
-.particles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: var(--primary);
-  border-radius: 50%;
-  opacity: 0.1;
-  pointer-events: none;
-}
-
-.particle:nth-child(1) { left: 10%; animation: float 8s infinite; }
-.particle:nth-child(2) { left: 20%; animation: float 10s infinite 1s; }
-.particle:nth-child(3) { left: 30%; animation: float 7s infinite 2s; }
-.particle:nth-child(4) { left: 40%; animation: float 9s infinite 3s; }
-.particle:nth-child(5) { left: 50%; animation: float 11s infinite 4s; }
-.particle:nth-child(6) { left: 60%; animation: float 8s infinite 5s; }
-.particle:nth-child(7) { left: 70%; animation: float 10s infinite 6s; }
-.particle:nth-child(8) { left: 80%; animation: float 7s infinite 7s; }
-.particle:nth-child(9) { left: 90%; animation: float 9s infinite 8s; }
 
 /* Utility Classes */
 .flex {
