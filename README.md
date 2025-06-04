@@ -1,169 +1,121 @@
-# AI-Generated Portfolio Website
+# Portfolio Website
 
-This portfolio website was generated through an AI-assisted development process using Claude 3.5 Sonnet, an advanced AI model by Anthropic. The development was done through Cursor IDE, which provided an interactive environment for AI-assisted coding.
+This is a personal portfolio website designed to showcase my projects, blog posts, and provide an easy way for visitors to get in touch. It's built with modern web technologies to ensure a responsive and engaging user experience.
 
-## 🤖 AI-Assisted Development Process
+## Features
 
-The website was built iteratively through conversations with the AI, which helped with:
+- **Responsive Design:** Adapts to various screen sizes for optimal viewing on desktops, tablets, and mobile devices.
+- **Theme Toggle:** Allows users to switch between light and dark mode for personalized viewing comfort.
+- **Navigation Sections:** Includes dedicated sections for:
+    - Home: A brief introduction and overview.
+    - Blog: A collection of articles and posts.
+    - Projects: A showcase of completed and ongoing projects.
+    - Contact: A form to send messages directly.
+- **Contact Form:** A functional contact form that submits data to a backend service.
 
-1. **Initial Setup & Structure**
-   - React + TypeScript project initialization
-   - Directory structure organization
-   - Component architecture design
-   - Routing setup with react-router-dom
+## Project Structure
 
-2. **Component Development**
-   - Navbar with responsive design
-   - Home page with animated hero section
-   - Blog section with Medium and LinkedIn integration
-   - Projects showcase
-   - Contact form
-   - Animated profile section
+The project is organized into several key directories:
 
-3. **Styling & Animations**
-   - Custom CSS variables for theming
-   - Responsive design implementation
-   - Advanced animations using CSS keyframes
-   - Interactive hover effects
-   - Modern UI components
+- **`public/`**: Contains static assets that are served directly by the web server, such as `index.html`, `favicon.ico`, and other public resources.
+- **`server/`**: Contains the backend code (Node.js/Express) for handling API requests, such as the contact form submission.
+- **`src/`**: Contains the main source code for the React application.
+    - **`src/assets/`**: Stores static assets like images, fonts, and global stylesheets that are imported into components.
+    - **`src/components/`**: Reusable UI components used throughout the application (e.g., Navbar, ThemeToggle).
+    - **`src/pages/`**: Top-level components that represent different pages or views of the application (e.g., Home, Blog, Projects, Contact).
+    - **`src/context/`**: Holds React Context files for global state management (e.g. ThemeContext).
+    - **`src/styles/`**: Contains global and component-specific styles.
+    - **`src/utils/`**: Utility functions that can be reused across the application.
+    - **`src/main.tsx`**: The main entry point for the React application.
+    - **`src/App.tsx`**: The root component of the application, responsible for routing and layout.
 
-## 🎨 Features
+## Setup and Local Development
 
-- **Modern Design**
-  - Clean and professional layout
-  - Responsive for all devices
-  - Custom color theming
-  - Typography optimization
+1.  **Clone the repository:**
+    ```bash
+    git clone <repository-url>
+    cd <repository-name>
+    ```
+    (Replace `<repository-url>` with the actual URL and `<repository-name>` with the folder name)
 
-- **Interactive Elements**
-  - Animated profile picture with morphing effects
-  - Smooth transitions and hover states
-  - Responsive navigation with mobile menu
-  - Card-based content presentation
+2.  **Install dependencies:**
+    This will install both frontend and backend dependencies.
+    ```bash
+    npm install
+    ```
 
-- **Performance Optimized**
-  - Optimized image loading
-  - Smooth animations
-  - Efficient CSS organization
-  - TypeScript for type safety
+3.  **Set up environment variables:**
+    Create a `.env` file in the root of the project and add any necessary environment variables (e.g., for the contact form endpoint or API keys). Refer to `.env.example` if provided.
+    For the contact form, you'll need to configure `VITE_API_URL` for the frontend to point to your backend.
+    The `server/index.js` might require variables like `EMAIL_USER`, `EMAIL_PASS`, `CLIENT_URL` for Resend/EmailJS.
 
-## 🛠️ Technologies Used
+4.  **Run the development servers:**
+    *   **Frontend (Vite):**
+        ```bash
+        npm run dev
+        ```
+        This will start the frontend development server, typically at `http://localhost:5173`.
+    *   **Backend (Node/Express):**
+        Open a new terminal tab/window, navigate to the `server` directory, and run:
+        ```bash
+        cd server
+        npm install # If you haven't already or if there are specific server dependencies
+        node index.js # Or your configured start script like `npm run start` if defined in server/package.json
+        ```
+        The backend server will typically start on a port like `3001` (check `server/index.js` for the exact port).
 
-- **Frontend Framework**
-  - React 18
-  - TypeScript
-  - React Router DOM
+## Technologies Used
 
-- **Styling**
-  - Custom CSS with variables
-  - Modern CSS features (Grid, Flexbox)
-  - CSS Animations and Transitions
+-   **Frontend:**
+    -   React: A JavaScript library for building user interfaces.
+    -   Vite: A fast build tool and development server.
+    -   TypeScript: A typed superset of JavaScript.
+    -   React Router: For client-side routing.
+-   **Backend:**
+    -   Node.js: A JavaScript runtime environment.
+    -   Express: A web application framework for Node.js.
+    -   (Potentially Resend or EmailJS for email services, check `server/index.js`)
+-   **Styling:**
+    -   CSS (likely with PostCSS or similar, configured through Vite)
+-   **Linting:**
+    -   ESLint: For code quality and consistency.
 
-- **Icons & Assets**
-  - React Icons (Font Awesome)
-  - Custom placeholder images
-  - Optimized SVGs
+## Deployment
 
-## 📁 Project Structure
+This project can be deployed using services like Render for the backend and GitHub Pages/Netlify/Vercel for the frontend.
 
-```
-portfolio/
-├── src/
-│   ├── components/
-│   │   ├── Navbar.tsx
-│   │   └── ...
-│   ├── pages/
-│   │   ├── Home.tsx
-│   │   ├── Blog.tsx
-│   │   ├── Projects.tsx
-│   │   └── Contact.tsx
-│   ├── styles/
-│   │   └── main.css
-│   ├── assets/
-│   │   └── [images]
-│   ├── types/
-│   │   └── images.d.ts
-│   └── App.tsx
-├── public/
-│   └── favicon.ico
-└── package.json
-```
+**For GitHub Pages (Frontend Only):**
 
-## 🚀 Key Features Explained
+1.  **Build the frontend:**
+    ```bash
+    npm run build
+    ```
+2.  **Deploy to GitHub Pages:**
+    ```bash
+    npm run deploy
+    ```
+    This will build the project and deploy the contents of the `dist` folder to the `gh-pages` branch.
+    **Note:** Make sure to update the `homepage` field in your `package.json` to reflect your GitHub Pages URL (e.g., `"homepage": "https://your-username.github.io/portfolio/"`).
 
-### Animated Profile Section
-```css
-/* Profile animation with morphing borders */
-.profile-container {
-  position: relative;
-  animation: float 6s ease-in-out infinite;
-}
+**For Backend (e.g., Render):**
 
-.profile-container::before,
-.profile-container::after {
-  content: '';
-  position: absolute;
-  border: 2px solid var(--primary);
-  animation: morph 8s linear infinite;
-}
-```
+1.  Ensure your `server/index.js` is configured to use environment variables for sensitive data and port numbers (Render sets the `PORT` environment variable automatically).
+2.  Make sure your `package.json` in the root has a `start` script for the server, or Render is configured to run `node server/index.js`. A `Procfile` is present which might be used by services like Heroku or Render (`web: node server/index.js`).
+3.  Push your code to a GitHub repository.
+4.  Connect your GitHub repository to Render and create a new Web Service.
+5.  Configure the build command (e.g., `npm install`) and the start command (e.g., `node server/index.js` or rely on `Procfile`).
+6.  Set up environment variables in the Render dashboard.
 
-### Dynamic Blog Cards
-```tsx
-<article className="featured-card">
-  <div className="featured-image-container">
-    <img src={mediumPlaceholder} alt="Latest from Medium" />
-    <div className="featured-overlay">
-      <FaMedium size={32} />
-    </div>
-  </div>
-  {/* ... content ... */}
-</article>
-```
+## Contributing
 
-### Responsive Navigation
-```tsx
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // ... mobile menu implementation
-}
-```
+Contributions are welcome! If you have suggestions for improvements or find any issues, please feel free to:
+1. Fork the project.
+2. Create a new branch (`git checkout -b feature/AmazingFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+5. Push to the branch (`git push origin feature/AmazingFeature`).
+6. Open a Pull Request.
 
-## 🎯 Resources Used
+## License
 
-1. **Design Inspiration**
-   - Modern portfolio trends
-   - Professional UI/UX practices
-   - Animation patterns
-
-2. **Code Resources**
-   - React documentation
-   - CSS Animation guides
-   - TypeScript best practices
-
-3. **Tools**
-   - Cursor IDE
-   - Claude 3.5 Sonnet
-   - React Developer Tools
-
-## 🤝 Contributing
-
-This project demonstrates the capabilities of AI-assisted development. Feel free to:
-- Fork and customize for your needs
-- Submit improvements or bug fixes
-- Share your experience with AI-assisted development
-
-## 📝 License
-
-MIT License - feel free to use this code for your own portfolio!
-
-## 🙏 Acknowledgments
-
-- Built with assistance from Claude 3.5 Sonnet
-- Developed in Cursor IDE
-- Icons from React Icons library
-- Community-contributed React patterns and best practices
-
----
-
-*This README is also AI-generated as part of the portfolio project documentation.*
+This project is licensed under the MIT License. See the `LICENSE` file for details (if one is present, otherwise assume MIT).
